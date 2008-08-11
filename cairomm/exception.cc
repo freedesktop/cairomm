@@ -29,7 +29,7 @@ inline static const char* string_or_empty(const char* text)
 
 //TODO: Is it wise to assume that the string is ASCII, as expected by std::logic_error?
 logic_error::logic_error(ErrorStatus status)
-: std::logic_error( string_or_empty(cairo_status_to_string((cairo_status_t)m_status)) ),
+: std::logic_error( string_or_empty(cairo_status_to_string((cairo_status_t)status)) ),
   m_status(status)
 {
 }
