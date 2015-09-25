@@ -17,9 +17,9 @@
  */
 
 /* M_PI is defined in math.h in the case of Microsoft Visual C++ */
-#if defined(_MSC_VER)
+#if defined(_WIN32)
 #define _USE_MATH_DEFINES
-#endif 
+#endif
 
 #include <cairommconfig.h>
 #include <cairomm/context.h>
@@ -28,11 +28,6 @@
 #include <cairomm/surface.h>
 #include <cairomm/script_surface.h>
 #include <cairomm/scaledfont.h>
-
-/* M_PI is defined in math.h in the case of Microsoft Visual C++ */
-#if defined(_MSC_VER)
-#define _USE_MATH_DEFINES
-#endif
 
 /* Solaris et. al. need math.h for M_PI too */
 #include <cmath>
