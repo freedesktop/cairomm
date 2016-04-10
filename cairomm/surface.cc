@@ -410,7 +410,7 @@ Rectangle RecordingSurface::ink_extents() const
   return inked;
 }
 
-bool RecordingSurface::get_extents(Rectangle &extents) const
+bool RecordingSurface::get_extents(Rectangle& extents) const
 {
   bool has_extents = cairo_recording_surface_get_extents(const_cast<cobject*>(cobj()),
       &extents);
