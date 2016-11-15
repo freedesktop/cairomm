@@ -1,3 +1,7 @@
+1.12.2 (stable):
+
+* Remove new API that was not meant to be added in 1.12.1.
+
 1.12.1 (stable):
 
 * C++11: Use nullptr instead of 0.
