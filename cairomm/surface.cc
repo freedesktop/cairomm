@@ -378,47 +378,6 @@ int ImageSurface::format_stride_for_width (Cairo::Format format, int width)
 }
 
 
-RecordingSurface::RecordingSurface(cairo_surface_t* cobject, bool has_reference)
-: Surface(cobject, has_reference)
-{ }
-
-RecordingSurface::~RecordingSurface()
-{
-  // surface is destroyed in base class
-}
-
-RefPtr<RecordingSurface> RecordingSurface::create(Content content)
-{
-  auto cobject = cairo_recording_surface_create((cairo_content_t)content, NULL);
-  check_status_and_throw_exception(cairo_surface_status(cobject));
-  return RefPtr<RecordingSurface>(new RecordingSurface(cobject, true /* has reference */));
-}
-
-RefPtr<RecordingSurface> RecordingSurface::create(const Rectangle& extents, Content content)
-{
-  auto cobject = cairo_recording_surface_create((cairo_content_t)content, &extents);
-  check_status_and_throw_exception(cairo_surface_status(cobject));
-  return RefPtr<RecordingSurface>(new RecordingSurface(cobject, true /* has reference */));
-}
-
-Rectangle RecordingSurface::ink_extents() const
-{
-  Rectangle inked;
-  cairo_recording_surface_ink_extents(const_cast<cobject*>(cobj()),
-      &inked.x, &inked.y, &inked.width, &inked.height);
-  check_object_status_and_throw_exception(*this);
-  return inked;
-}
-
-bool RecordingSurface::get_extents(Rectangle &extents) const
-{
-  bool has_extents = cairo_recording_surface_get_extents(const_cast<cobject*>(cobj()),
-      &extents);
-  check_object_status_and_throw_exception(*this);
-  return has_extents;
-}
-
-
 /*******************************************************************************
  * THE FOLLOWING SURFACE TYPES ARE EXPERIMENTAL AND NOT FULLY SUPPORTED
  ******************************************************************************/
