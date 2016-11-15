@@ -645,7 +645,7 @@ public:
    * @return true if the recording surface is bounded, false if the recording
    * surface is unbounded (in which case `extents` will not be set).
    */
-  bool get_extents(Rectangle& extents) const;
+  bool get_extents(Rectangle &extents) const;
 
   /**
    * Creates a recording surface which can be used to record all drawing
