@@ -1,3 +1,8 @@
+1.13.1 (unstable):
+
+* Added RecordingSurface, wrapping cairo_recording_surface.
+  (Jason Rhinelander) Bug #121359
+
 1.12.2 (stable):
 
 * Remove new API that was not meant to be added in 1.12.1.
