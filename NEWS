@@ -1,4 +1,11 @@
-1.12.0 (unstable):
+1.12.1 (stable):
+
+* C++11: Use nullptr instead of 0.
+* C++11: Use override keyword on destructors.
+* C++11: Make operator bool() explicit.
+  (Murray Cumming)
+
+1.12.0 (stable):
 
 * Cairo::RefPtr: Add move constructors and move operator=().
   (Murray Cumming)
