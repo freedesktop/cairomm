@@ -20,7 +20,9 @@
 #define __CAIROMM_ENUMS_H
 
 #include <cairo.h>
+#ifdef CAIRO_HAS_FT_FONT
 #include <cairo-ft.h>
+#endif //CAIRO_HAS_FT_FONT
 
 namespace Cairo
 {
@@ -828,6 +830,7 @@ typedef enum
  *
  * @since 1.12
  */
+#ifdef CAIRO_HAS_FT_FONT
 enum FtSynthesize {
 
     /// Embolden the glyphs (redraw with a pixel offset)
@@ -846,7 +849,7 @@ inline FtSynthesize operator&(FtSynthesize a, FtSynthesize b)
 {
     return static_cast<FtSynthesize>(static_cast<int>(a) & static_cast<int>(b));
 }
-
+#endif //CAIRO_HAS_FT_FONT
 } // namespace Cairo
 
 #endif //__CAIROMM_ENUMS_H
