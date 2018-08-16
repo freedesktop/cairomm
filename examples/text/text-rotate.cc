@@ -19,9 +19,6 @@
 /* M_PI is defined in math.h in the case of Microsoft Visual C++, and
  * Solaris needs math.h for M_PI and floor()
  */
-#if defined(_MSC_VER)
-#define _USE_MATH_DEFINES
-#endif 
 
 #include <string>
 #include <iostream>
