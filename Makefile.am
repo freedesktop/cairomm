@@ -33,7 +33,7 @@ nodist_pkgconfig_DATA = $(CAIROMM_INSTALL_PC)
 
 include $(srcdir)/MSVC_NMake/filelist.am
 
-msvc_files = $(addprefix MSVC_NMake/,$(msvc_net2017_data))
+msvc_files = $(addprefix MSVC_NMake/,$(msvc_nmake_data))
 
 dist_noinst_DATA = MAINTAINERS $(msvc_files)
 dist_noinst_SCRIPTS = autogen.sh
