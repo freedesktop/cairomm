@@ -31,14 +31,14 @@ nodist_cairomm_libinclude_HEADERS = cairommconfig.h
 pkgconfigdir = $(libdir)/pkgconfig
 nodist_pkgconfig_DATA = $(CAIROMM_INSTALL_PC)
 
-include $(srcdir)/MSVC_Net2017/filelist.am
+include $(srcdir)/MSVC_NMake/filelist.am
 
-msvc_files = $(addprefix MSVC_Net2017/,$(msvc_net2017_data))
+msvc_files = $(addprefix MSVC_NMake/,$(msvc_net2017_data))
 
 dist_noinst_DATA = MAINTAINERS $(msvc_files)
 dist_noinst_SCRIPTS = autogen.sh
 
-DISTCLEANFILES = MSVC_Net2017/cairomm/cairommconfig.h
+DISTCLEANFILES = MSVC_NMake/cairomm/cairommconfig.h
 
 # Optional: auto-generate the ChangeLog file from the git log on make dist
 include $(top_srcdir)/build/dist-changelog.am
