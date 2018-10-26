@@ -1,11 +1,13 @@
-Building cairomm-1.0 with Visual Studio .NET 2013
+Building cairomm with Visual Studio .NET 2015 or later
 
-* You will need Visual Studio 2013 (MSVC 12.0).  Building with Visual Studio 2012 or earlier is no longer supported.
+* You will need Visual Studio 2015 (MSVC 14.0) or later.  Building with Visual Studio 2015 or earlier is no longer
+  supported.
 * Install the latest Win32 GTK+ Development files from ftp://ftp.gnome.org/pub/GNOME/binaries/win32/gtk+/ and add
-  the paths to headers and import libraries to Visual Studio, if they are not already in $(srcroot)/../vs12/$(Platform).
-* Load the MSVC_Net2013/cairomm.sln solution.
-* Build the entire solution.
-* Run the tests.
+  the paths to headers and import libraries to Visual Studio, if they are not already in
+  $(srcroot)/../vs$(VSVER)/$(Platform).
+* In a Visual Studio command prompt, go to $(srcroot)\MSVC_NMake
+* Build using nmake /f Makefile.vc CFG=[release|debug]
+* Run the tests (not currently buildable).
 
 Cedric Gustin
 08/18/2006
@@ -15,3 +17,4 @@ Armin Burgmeier
 
 Chun-wei Fan
 09/10/2015
+10/26/2018
