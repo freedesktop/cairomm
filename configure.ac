@@ -140,8 +140,8 @@ AC_CONFIG_FILES([Makefile
                  data/cairomm-win32-font-1.0.pc
                  data/cairomm-xlib-1.0.pc
                  data/cairomm-xlib-xrender-1.0.pc
-                 MSVC_Net2013/cairomm/cairomm.rc])
+                 MSVC_NMake/cairomm/cairomm.rc])
 
-AC_CONFIG_COMMANDS([MSVC_Net2013/cairomm/cairommconfig.h],
-                   [cp -f cairommconfig.h MSVC_Net2013/cairomm/cairommconfig.h])
+AC_CONFIG_COMMANDS([MSVC_NMake/cairomm/cairommconfig.h],
+                   [cp -f cairommconfig.h MSVC_NMake/cairomm/cairommconfig.h])
 AC_OUTPUT
