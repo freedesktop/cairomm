@@ -21,7 +21,7 @@ help:
 	@echo.
 	@echo PREFIX: Optional, the path where dependent libraries and tools may be
 	@echo found, default is ^$(srcrootdir)\..\vs^$(short_vs_ver)\^$(platform),
-	@echo where ^$(short_vs_ver) is 15 for VS 2017 and so on; and
+	@echo where ^$(short_vs_ver) is 14 for VS 2015~2019 and so on; and
 	@echo ^$(platform) is Win32 for 32-bit builds and x64 for x64 builds.
 	@echo.
 	@echo ======

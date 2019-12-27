@@ -8,7 +8,7 @@
 # in $(GLIB_PREFIX)\lib.
 
 !if "$(PREFIX)" == ""
-PREFIX = ..\..\vs$(VSVER)\$(PLAT)
+PREFIX = ..\..\vs$(PDBVER)\$(PLAT)
 !endif
 
 # Location of the PERL interpreter, for running glib-mkenums.  glib-mkenums
@@ -89,8 +89,10 @@ VSVER = 11
 VSVER = 12
 !elseif $(VCVERSION) > 1899 && $(VCVERSION) < 1910
 VSVER = 14
-!elseif $(VCVERSION) > 1909 && $(VCVERSION) < 2000
+!elseif $(VCVERSION) > 1909 && $(VCVERSION) < 1920
 VSVER = 15
+!elseif $(VCVERSION) > 1919 && $(VCVERSION) < 2000
+VSVER = 16
 !else
 VSVER = 0
 !endif
