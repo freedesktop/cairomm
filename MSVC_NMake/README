@@ -7,7 +7,7 @@ Building cairomm with Visual Studio .NET 2015 or later
   $(srcroot)/../vs$(VSVER)/$(Platform).
 * In a Visual Studio command prompt, go to $(srcroot)\MSVC_NMake
 * Build using nmake /f Makefile.vc CFG=[release|debug]
-* Run the tests (not currently buildable).
+* Run the tests
 
 Cedric Gustin
 08/18/2006
