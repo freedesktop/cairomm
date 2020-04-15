@@ -14,11 +14,13 @@
 # $<
 # <<
 {..\cairomm\}.cc{vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm\}.obj::
+	@if not exist vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm\ md vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm
 	$(CXX) $(LIBCAIROMM_CFLAGS) $(CFLAGS_NOGL) /Fovs$(PDBVER)\$(CFG)\$(PLAT)\cairomm\ /Fdvs$(PDBVER)\$(CFG)\$(PLAT)\cairomm\ /c @<<
 $<
 <<
 
 {.\cairomm\}.rc{vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm\}.res:
+	@if not exist $(@D)\ md $(@D)
 	rc /fo$@ $<
 
 # Rules for building .lib files
@@ -46,26 +48,25 @@ $(cairomm_OBJS)
 # 	@-if exist $@.manifest mt /manifest $@.manifest /outputresource:$@;1
 
 {.\gendef\}.cc{vs$(PDBVER)\$(CFG)\$(PLAT)\}.exe:
-	@if not exist vs$(PDBVER)\$(CFG)\$(PLAT)\gendef\ $(MAKE) -f Makefile.vc CFG=$(CFG) vs$(PDBVER)\$(CFG)\$(PLAT)\gendef
+	@if not exist $(@D)\gendef\ md $(@D)\gendef
 	$(CXX) $(CAIROMM_BASE_CFLAGS) $(CFLAGS) /Fo$(@D)\gendef\ /Fd$(@D)\gendef\ $< /link $(LDFLAGS) /out:$@
 
 {..\examples\text\}.cc{vs$(PDBVER)\$(CFG)\$(PLAT)\}.exe:
-	@if not exist vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm-ex $(MAKE) -f Makefile.vc CFG=$(CFG) vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm-ex
+	@if not exist vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm-ex\ md vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm-ex
 	@if not exist $(CAIROMM_LIB) $(MAKE) -f Makefile.vc CFG=$(CFG) $(CAIROMM_LIB)
 	$(CXX) $(CAIROMM_EX_CFLAGS) $(CFLAGS) /Fo$(@D)\cairomm-ex\ /Fd$(@D)\cairomm-ex\ $< /Fe$@ /link $(LDFLAGS) $(CAIROMM_LIB) $(LIBSIGC_LIB) $(CAIRO_LIB)
 	@-if exist $@.manifest mt /manifest $@.manifest /outputresource:$@;1
 
 {..\examples\surfaces\}.cc{vs$(PDBVER)\$(CFG)\$(PLAT)\}.exe:
-	@if not exist vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm-ex $(MAKE) -f Makefile.vc CFG=$(CFG) vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm-ex
+	@if not exist vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm-ex\ md vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm-ex
 	@if not exist $(CAIROMM_LIB) $(MAKE) -f Makefile.vc CFG=$(CFG) $(CAIROMM_LIB)
 	$(CXX) $(CAIROMM_EX_CFLAGS) $(CFLAGS) /Fo$(@D)\cairomm-ex\ /Fd$(@D)\cairomm-ex\ $< /Fe$@ /link $(LDFLAGS) $(CAIROMM_LIB) $(LIBSIGC_LIB) $(CAIRO_LIB)
 	@-if exist $@.manifest mt /manifest $@.manifest /outputresource:$@;1
 
 {..\tests\}.cc{vs$(PDBVER)\$(CFG)\$(PLAT)\}.exe:
 	@if not exist $(CAIROMM_LIB) $(MAKE) -f Makefile.vc CFG=$(CFG) $(CAIROMM_LIB)
-	@if not exist vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm-tests $(MAKE) -f Makefile.vc CFG=$(CFG) vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm-tests
+	@if not exist vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm-tests\ md vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm-tests
 	$(CXX) $(CAIROMM_TEST_CFLAGS) $(CFLAGS) /Fo$(@D)\cairomm-tests\ /Fd$(@D)\cairomm-tests\ $< /Fe$@ /link $(LDFLAGS) $(CAIROMM_LIB) $(LIBSIGC_LIB) $(CAIRO_LIB)
-	@-if exist $@.manifest mt /manifest $@.manifest /outputresource:$@;1
 
 clean:
 	@-del /f /q vs$(PDBVER)\$(CFG)\$(PLAT)\*.exe
