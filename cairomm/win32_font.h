@@ -32,7 +32,7 @@ namespace Cairo
  *
  * @since 1.8
  */
-class Win32FontFace : public FontFace
+class CAIROMM_API Win32FontFace : public FontFace
 {
 public:
 
@@ -83,7 +83,7 @@ protected:
  *
  * @since 1.8
  */
-class Win32ScaledFont : public ScaledFont
+class CAIROMM_API Win32ScaledFont : public ScaledFont
 {
 public:
 

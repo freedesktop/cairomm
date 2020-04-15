@@ -19,6 +19,8 @@
 #ifndef __CAIRO_EXCEPTION_H
 #define __CAIRO_EXCEPTION_H
 
+#include <cairommconfig.h>
+
 #include <cairomm/enums.h>
 #include <stdexcept>
 
@@ -32,7 +34,7 @@ namespace Cairo
 
 /** 
  */
-class logic_error: public std::logic_error
+class CAIROMM_API logic_error: public std::logic_error
 {
 public:
   explicit logic_error(ErrorStatus status);

@@ -37,7 +37,7 @@ namespace Cairo
  * is most useful for low-level font usage where a library or application wants
  * to cache a reference to a scaled font to speed up the computation of metrics.
  */
-class ScaledFont
+class CAIROMM_API ScaledFont
 {
 
 public: 
@@ -238,7 +238,7 @@ protected:
 /**
  * @since 1.8
  */
-class FtScaledFont : public ScaledFont
+class CAIROMM_API FtScaledFont : public ScaledFont
 {
 public:
   /** Creates a ScaledFont From a FtFontFace.

@@ -19,6 +19,8 @@
 #ifndef __CAIROMM_FONTOPTIONS_H
 #define __CAIROMM_FONTOPTIONS_H
 
+#include <cairommconfig.h>
+
 #include <cairomm/enums.h>
 #include <string>
 //#include <cairo.h>
@@ -35,7 +37,7 @@ namespace Cairo
  * need any changes, but for pixel-based targets tweaking font options
  * may result in superior output on a particular display.
  */
-class FontOptions
+class CAIROMM_API FontOptions
 {
 public:
   FontOptions();
