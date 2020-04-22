@@ -17,9 +17,6 @@
  */
 
 /* M_PI is defined in math.h in the case of Microsoft Visual C++ */
-#if defined(_WIN32)
-#define _USE_MATH_DEFINES
-#endif
 
 #include <cairommconfig.h>
 #include <cairomm/context.h>
