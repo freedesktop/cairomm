@@ -25,7 +25,9 @@ AC_CONFIG_MACRO_DIR([build])
 AC_CONFIG_HEADERS([build/config.h cairommconfig.h])
 
 AM_INIT_AUTOMAKE([1.10 -Wno-portability no-define nostdinc tar-pax])
-m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES])
+# Support silent build rules.
+# Disable by either passing --disable-silent-rules to configure or passing V=1 to make.
+m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 AM_MAINTAINER_MODE
 AC_ARG_VAR([ACLOCAL_FLAGS], [aclocal flags, e.g. -I <macro dir>])
 
