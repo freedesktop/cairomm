@@ -30,8 +30,7 @@
 namespace Cairo
 {
 
-/** 
- */
+
 class logic_error: public std::logic_error
 {
 public:
