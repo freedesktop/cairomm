@@ -1,0 +1,21 @@
+#ifndef _CAIROMM_CONFIG_H
+#define _CAIROMM_CONFIG_H
+
+/* This file is part of cairomm. */
+
+/* Define to omit deprecated API from the library. */
+#mesondefine CAIROMM_DISABLE_DEPRECATED
+
+/* Defined when the -Dbuild-exceptions-api=true configure argument was given */
+#mesondefine CAIROMM_EXCEPTIONS_ENABLED
+
+/* Major version number of cairomm. */
+#mesondefine CAIROMM_MAJOR_VERSION
+
+/* Minor version number of cairomm. */
+#mesondefine CAIROMM_MINOR_VERSION
+
+/* Micro version number of cairomm. */
+#mesondefine CAIROMM_MICRO_VERSION
+
+#endif /* _CAIROMM_CONFIG_H */

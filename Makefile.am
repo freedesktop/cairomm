@@ -40,6 +40,20 @@ dist_noinst_SCRIPTS = autogen.sh
 
 DISTCLEANFILES = MSVC_NMake/cairomm/cairommconfig.h
 
+# Distribute files needed when building cairomm with Meson.
+EXTRA_DIST = \
+  meson.build \
+  meson_options.txt \
+  cairommconfig.h.meson \
+  MSVC_NMake/cairomm/meson.build \
+  MSVC_NMake/gendef/meson.build \
+  cairomm/meson.build \
+  data/meson.build \
+  docs/reference/meson.build \
+  examples/meson.build \
+  tests/meson.build \
+  untracked/README
+
 # Optional: auto-generate the ChangeLog file from the git log on make dist
 include $(top_srcdir)/build/dist-changelog.am
 
