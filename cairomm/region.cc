@@ -148,7 +148,7 @@ void Region::translate(int dx, int dy)
 
 void Region::subtract(const RefPtr<Region>& other)
 {
-  auto status = cairo_region_subtract(m_cobject, (other ? other->cobj() : 0));
+  auto status = cairo_region_subtract(m_cobject, (other ? other->cobj() : nullptr));
   check_status_and_throw_exception (status);
 }
 
@@ -160,7 +160,7 @@ void Region::subtract(const RectangleInt& rectangle)
 
 void Region::intersect(const RefPtr<Region>& other)
 {
-  auto status = cairo_region_intersect(m_cobject, (other ? other->cobj() : 0));
+  auto status = cairo_region_intersect(m_cobject, (other ? other->cobj() : nullptr));
   check_status_and_throw_exception (status);
 }
 
@@ -172,7 +172,7 @@ void Region::intersect(const RectangleInt& rectangle)
 
 void Region::do_union(const RefPtr<Region>& other)
 {
-  auto status = cairo_region_union(m_cobject, (other ? other->cobj() : 0));
+  auto status = cairo_region_union(m_cobject, (other ? other->cobj() : nullptr));
   check_status_and_throw_exception (status);
 }
 
@@ -184,7 +184,7 @@ void Region::do_union(const RectangleInt& rectangle)
 
 void Region::do_xor(const RefPtr<Region>& other)
 {
-  auto status = cairo_region_xor(m_cobject, (other ? other->cobj() : 0));
+  auto status = cairo_region_xor(m_cobject, (other ? other->cobj() : nullptr));
   check_status_and_throw_exception (status);
 }
 

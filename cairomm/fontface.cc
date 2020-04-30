@@ -118,7 +118,7 @@ FontWeight ToyFontFace::get_weight() const
 static const cairo_user_data_key_t user_font_key = {0};
 
 static void
-log_uncaught_exception(const char* message = 0)
+log_uncaught_exception(const char* message = nullptr)
 {
   std::cerr << "*** cairomm: Uncaught exception in UserFont callback";
   if(message)
@@ -316,7 +316,7 @@ UserFontFace::text_to_glyphs(const RefPtr<ScaledFont>& /*scaled_font*/,
   // parameter.
   // TODO: Is there a reentrancy requirement, and is this code reentrant?
   cairo_font_face_set_user_data(cobj(), &USER_DATA_KEY_DEFAULT_TEXT_TO_GLYPHS,
-                                this, 0);
+                                this, nullptr);
   return CAIRO_STATUS_SUCCESS;
 }
 
@@ -364,7 +364,7 @@ UserFontFace::UserFontFace()
   // store a pointer to the wrapper class in the user-data, so that when one of
   // the callback functions gets called (which has to be a plain-C function so
   // can't be a class member), we can get a reference to the wrapper class
-  cairo_font_face_set_user_data(m_cobject, &user_font_key, this, 0);
+  cairo_font_face_set_user_data(m_cobject, &user_font_key, this, nullptr);
   cairo_user_font_face_set_init_func(cobj(), init_cb);
   cairo_user_font_face_set_render_glyph_func(cobj(), render_glyph_cb);
   cairo_user_font_face_set_unicode_to_glyph_func(cobj(), unicode_to_glyph_cb);

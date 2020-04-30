@@ -120,7 +120,7 @@ void Surface::set_mime_data(const std::string& mime_type, unsigned char* data, u
 void Surface::unset_mime_data(const std::string& mime_type)
 {
   cairo_surface_set_mime_data(const_cast<cobject*>(cobj()), mime_type.c_str(),
-    0, 0, 0, 0);
+    nullptr, 0, nullptr, nullptr);
   check_object_status_and_throw_exception(*this);
 }
 

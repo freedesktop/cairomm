@@ -163,7 +163,7 @@ void Context::set_dash(std::valarray<double>& dashes, double offset)
 void Context::set_dash(std::vector<double>& dashes, double offset)
 {
   cairo_set_dash(cobj(),
-    (dashes.empty() ? 0 : &dashes[0]),
+    (dashes.empty() ? nullptr : &dashes[0]),
     dashes.size(), offset);
   check_object_status_and_throw_exception(*this);
 }
@@ -180,14 +180,14 @@ void Context::set_dash(const std::valarray<double>& dashes, double offset)
 void Context::set_dash(const std::vector<double>& dashes, double offset)
 {
   cairo_set_dash(cobj(),
-    (dashes.empty() ? 0 : &dashes[0]),
+    (dashes.empty() ? nullptr : &dashes[0]),
     dashes.size(), offset);
   check_object_status_and_throw_exception(*this);
 }
 
 void Context::unset_dash()
 {
-  cairo_set_dash(cobj(), NULL, 0, 0.0);
+  cairo_set_dash(cobj(), nullptr, 0, 0.0);
   check_object_status_and_throw_exception(*this);
 }
 
@@ -587,9 +587,9 @@ void Context::show_text_glyphs(const std::string& utf8,
                                TextClusterFlags cluster_flags)
 {
   cairo_show_text_glyphs(cobj(), utf8.c_str(), utf8.size(),
-                         (glyphs.empty() ? 0 : &glyphs[0]),
+                         (glyphs.empty() ? nullptr : &glyphs[0]),
                          glyphs.size(),
-                         (clusters.empty() ? 0 : &clusters[0]),
+                         (clusters.empty() ? nullptr : &clusters[0]),
                          clusters.size(),
                          static_cast<cairo_text_cluster_flags_t>(cluster_flags));
   check_object_status_and_throw_exception(*this);
@@ -598,7 +598,7 @@ void Context::show_text_glyphs(const std::string& utf8,
 void Context::show_glyphs(const std::vector<Glyph>& glyphs)
 {
   cairo_show_glyphs(cobj(),
-    const_cast<cairo_glyph_t*>((glyphs.empty() ? 0 : &glyphs[0])),
+    const_cast<cairo_glyph_t*>((glyphs.empty() ? nullptr : &glyphs[0])),
     glyphs.size());
   check_object_status_and_throw_exception(*this);
 }
@@ -638,7 +638,7 @@ void Context::get_text_extents(const std::string& utf8, TextExtents& extents) co
 void Context::get_glyph_extents(const std::vector<Glyph>& glyphs, TextExtents& extents) const
 {
   cairo_glyph_extents(const_cast<cobject*>(cobj()),
-                      const_cast<cairo_glyph_t*>(glyphs.empty() ? 0 : &glyphs[0]),
+                      const_cast<cairo_glyph_t*>(glyphs.empty() ? nullptr : &glyphs[0]),
                       glyphs.size(), &extents);
   check_object_status_and_throw_exception(*this);
 }
@@ -652,7 +652,7 @@ void Context::text_path(const std::string& utf8)
 void Context::glyph_path(const std::vector<Glyph>& glyphs)
 {
   cairo_glyph_path(cobj(),
-    const_cast<cairo_glyph_t*>(glyphs.empty() ? 0 : &glyphs[0]),
+    const_cast<cairo_glyph_t*>(glyphs.empty() ? nullptr : &glyphs[0]),
     glyphs.size());
   check_object_status_and_throw_exception(*this);
 }
