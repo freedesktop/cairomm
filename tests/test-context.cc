@@ -1,4 +1,3 @@
-// vim: ts=2 sw=2 et
 /*
  * These tests are of limited usefulness.  In fact, you might even say that
  * they're not really tests at all.  But I felt that it would be useful to have
@@ -18,8 +17,9 @@ using namespace boost::unit_test;
   auto surf = Cairo::ImageSurface::create(Cairo::FORMAT_ARGB32, 10, 10); \
   auto cr = Cairo::Context::create(surf);
 
-void
-test_dashes ()
+BOOST_AUTO_TEST_SUITE( Cairo_Context )
+
+BOOST_AUTO_TEST_CASE(test_dashes)
 {
   CREATE_CONTEXT(cr);
   std::valarray<double> dash_array(4);
@@ -57,8 +57,7 @@ test_dashes ()
   BOOST_CHECK (get_array.empty ());
 }
 
-void
-test_save_restore ()
+BOOST_AUTO_TEST_CASE(test_save_restore)
 {
   CREATE_CONTEXT(cr);
   cr->set_line_width (2.3);
@@ -69,8 +68,7 @@ test_save_restore ()
   BOOST_CHECK_EQUAL (2.3, cr->get_line_width ());
 }
 
-void
-test_operator ()
+BOOST_AUTO_TEST_CASE(test_operator)
 {
   CREATE_CONTEXT(cr);
   cr->set_operator (Cairo::OPERATOR_ATOP);
@@ -79,8 +77,7 @@ test_operator ()
   BOOST_CHECK_EQUAL (Cairo::OPERATOR_CLEAR, cr->get_operator ());
 }
 
-void
-test_source ()
+BOOST_AUTO_TEST_CASE(test_source)
 {
   CREATE_CONTEXT(cr);
   auto solid_pattern =
@@ -144,16 +141,14 @@ test_source ()
   }
 }
 
-void
-test_tolerance ()
+BOOST_AUTO_TEST_CASE(test_tolerance)
 {
   CREATE_CONTEXT(cr);
   cr->set_tolerance (3.0);
   BOOST_CHECK_EQUAL (3.0, cr->get_tolerance ());
 }
 
-void
-test_antialias ()
+BOOST_AUTO_TEST_CASE(test_antialias)
 {
   CREATE_CONTEXT(cr);
   cr->set_antialias (Cairo::ANTIALIAS_GRAY);
@@ -163,8 +158,7 @@ test_antialias ()
   BOOST_CHECK_EQUAL (Cairo::ANTIALIAS_SUBPIXEL, cr->get_antialias ());
 }
 
-void
-test_fill_rule ()
+BOOST_AUTO_TEST_CASE(test_fill_rule)
 {
   CREATE_CONTEXT(cr);
   cr->set_fill_rule (Cairo::FILL_RULE_EVEN_ODD);
@@ -173,8 +167,7 @@ test_fill_rule ()
   BOOST_CHECK_EQUAL (Cairo::FILL_RULE_WINDING, cr->get_fill_rule ());
 }
 
-void
-test_line_width ()
+BOOST_AUTO_TEST_CASE(test_line_width)
 {
   CREATE_CONTEXT(cr);
   cr->set_line_width (1.0);
@@ -183,8 +176,7 @@ test_line_width ()
   BOOST_CHECK_EQUAL (4.0, cr->get_line_width ());
 }
 
-void
-test_line_cap ()
+BOOST_AUTO_TEST_CASE(test_line_cap)
 {
   CREATE_CONTEXT(cr);
   cr->set_line_cap (Cairo::LINE_CAP_BUTT);
@@ -193,8 +185,7 @@ test_line_cap ()
   BOOST_CHECK_EQUAL (Cairo::LINE_CAP_ROUND, cr->get_line_cap ());
 }
 
-void
-test_line_join ()
+BOOST_AUTO_TEST_CASE(test_line_join )
 {
   CREATE_CONTEXT(cr);
   cr->set_line_join (Cairo::LINE_JOIN_BEVEL);
@@ -203,8 +194,7 @@ test_line_join ()
   BOOST_CHECK_EQUAL (Cairo::LINE_JOIN_MITER, cr->get_line_join ());
 }
 
-void
-test_miter_limit ()
+BOOST_AUTO_TEST_CASE(test_miter_limit)
 {
   CREATE_CONTEXT (cr);
   cr->set_miter_limit (1.3);
@@ -213,8 +203,7 @@ test_miter_limit ()
   BOOST_CHECK_EQUAL (4.12, cr->get_miter_limit ());
 }
 
-void
-test_matrix ()
+BOOST_AUTO_TEST_CASE(test_matrix)
 {
   // just excercise the functionality
   CREATE_CONTEXT (cr);
@@ -226,10 +215,10 @@ test_matrix ()
   cr->set_identity_matrix ();
   cr->get_matrix (matrix);
   auto m2 = cr->get_matrix ();
+  (void)m2; // Silence a warning (unused-but-set-variable)
 }
 
-void
-test_user_device ()
+BOOST_AUTO_TEST_CASE(test_user_device)
 {
   // scale / transform a context, and then verify that user-to-device and
   // device-to-user things work.
@@ -250,8 +239,7 @@ test_user_device ()
   BOOST_CHECK_CLOSE (5.29, y, FLT_EPSILON);
 }
 
-void
-test_draw ()
+BOOST_AUTO_TEST_CASE(test_draw)
 {
   CREATE_CONTEXT (cr);
   // just call a bunch of drawing functions to excercise them a bit.  There's no
@@ -271,8 +259,7 @@ test_draw ()
   cr->paint ();
 }
 
-void
-test_clip ()
+BOOST_AUTO_TEST_CASE(test_clip)
 {
   CREATE_CONTEXT (cr);
   cr->rectangle (0.0, 0.0, 1.0, 1.0);
@@ -285,8 +272,7 @@ test_clip ()
   BOOST_CHECK (y2 == 1.0);
 }
 
-void
-test_current_point ()
+BOOST_AUTO_TEST_CASE(test_current_point)
 {
   CREATE_CONTEXT (cr);
   cr->move_to (2.0, 3.0);
@@ -296,8 +282,7 @@ test_current_point ()
   BOOST_CHECK (y == 3.0);
 }
 
-void
-test_target ()
+BOOST_AUTO_TEST_CASE(test_target)
 {
   auto surf = Cairo::ImageSurface::create(Cairo::FORMAT_ARGB32, 10, 10); \
   auto cr = Cairo::Context::create(surf);
@@ -320,7 +305,7 @@ test_target ()
   BOOST_CHECK (!bad_surface2);
 }
 
-void test_scaled_font()
+BOOST_AUTO_TEST_CASE(test_scaled_font)
 {
   CREATE_CONTEXT (cr);
   auto face = Cairo::ToyFontFace::create("sans",
@@ -342,7 +327,7 @@ void test_scaled_font()
   BOOST_CHECK(cr->get_scaled_font());
 }
 
-void test_font_options()
+BOOST_AUTO_TEST_CASE(test_font_options)
 {
   CREATE_CONTEXT (cr);
   Cairo::FontOptions options;
@@ -353,33 +338,4 @@ void test_font_options()
   BOOST_CHECK(options == other);
 }
 
-test_suite*
-init_unit_test_suite(int argc, char* argv[])
-{
-  // compile even with -Werror
-  if (argc && argv) {}
-
-  test_suite* test= BOOST_TEST_SUITE( "Cairo::Context Tests" );
-
-  test->add (BOOST_TEST_CASE (&test_dashes));
-  test->add (BOOST_TEST_CASE (&test_save_restore));
-  test->add (BOOST_TEST_CASE (&test_operator));
-  test->add (BOOST_TEST_CASE (&test_source));
-  test->add (BOOST_TEST_CASE (&test_tolerance));
-  test->add (BOOST_TEST_CASE (&test_antialias));
-  test->add (BOOST_TEST_CASE (&test_fill_rule));
-  test->add (BOOST_TEST_CASE (&test_line_width));
-  test->add (BOOST_TEST_CASE (&test_line_cap));
-  test->add (BOOST_TEST_CASE (&test_line_join));
-  test->add (BOOST_TEST_CASE (&test_miter_limit));
-  test->add (BOOST_TEST_CASE (&test_matrix));
-  test->add (BOOST_TEST_CASE (&test_user_device));
-  test->add (BOOST_TEST_CASE (&test_draw));
-  test->add (BOOST_TEST_CASE (&test_clip));
-  test->add (BOOST_TEST_CASE (&test_current_point));
-  test->add (BOOST_TEST_CASE (&test_target));
-  test->add (BOOST_TEST_CASE (&test_scaled_font));
-  test->add (BOOST_TEST_CASE (&test_font_options));
-
-  return test;
-}
+BOOST_AUTO_TEST_SUITE_END()

@@ -7,7 +7,9 @@
 using namespace boost::unit_test;
 using namespace Cairo;
 
-void test_excercise()
+BOOST_AUTO_TEST_SUITE( Cairo_FontOptions )
+
+BOOST_AUTO_TEST_CASE(test_excercise)
 {
   // just excercise all of the methods
   Cairo::FontOptions options;
@@ -34,15 +36,4 @@ void test_excercise()
   BOOST_CHECK_EQUAL(Cairo::HINT_METRICS_OFF, metrics);
 }
 
-test_suite*
-init_unit_test_suite(int argc, char* argv[])
-{
-  // compile even with -Werror
-  if (argc && argv) {}
-
-  test_suite* test= BOOST_TEST_SUITE( "Cairo::Context Tests" );
-
-  test->add (BOOST_TEST_CASE (&test_excercise));
-
-  return test;
-}
+BOOST_AUTO_TEST_SUITE_END()

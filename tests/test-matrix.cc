@@ -31,7 +31,9 @@ std::ostream& operator<<(std::ostream& out, const Cairo::Matrix& matrix)
     << matrix.y0 << " ]";
 }
 
-void test_constructors()
+BOOST_AUTO_TEST_SUITE( Cairo_Matrix )
+
+BOOST_AUTO_TEST_CASE(test_constructors)
 {
   cairo_matrix_t c_identity;
   cairo_matrix_init_identity(&c_identity);
@@ -56,7 +58,7 @@ void test_constructors()
   BOOST_CHECK_EQUAL(c_matrix.y0, cpp_matrix.y0);
 }
 
-void test_invert()
+BOOST_AUTO_TEST_CASE(test_invert)
 {
   // test a valid matrix
   BOOST_CHECK_NO_THROW(Cairo::identity_matrix().invert());
@@ -71,7 +73,7 @@ static void foo(cairo_matrix_t* matrix)
   test_matrix = matrix;
 }
 
-void test_cast()
+BOOST_AUTO_TEST_CASE(test_cast)
 {
   // make sure that we can cast between C++ and C types without ill effect
   auto matrix = Cairo::identity_matrix();
@@ -97,7 +99,7 @@ void test_cast()
   BOOST_CHECK_EQUAL(matrix.y0, test_matrix->y0);
 }
 
-void test_multiply()
+BOOST_AUTO_TEST_CASE(test_multiply)
 {
   auto A = Cairo::scaling_matrix(2, 4);
   auto B = Cairo::translation_matrix(5.3, 1.2);
@@ -107,15 +109,4 @@ void test_multiply()
   BOOST_CHECK_EQUAL(C, D);
 }
 
-test_suite*
-init_unit_test_suite(int /*argc*/, char** /*argv*/)
-{
-  test_suite* test= BOOST_TEST_SUITE( "Cairo::Matrix Tests" );
-
-  test->add (BOOST_TEST_CASE (&test_constructors));
-  test->add (BOOST_TEST_CASE (&test_invert));
-  test->add (BOOST_TEST_CASE (&test_cast));
-  test->add (BOOST_TEST_CASE (&test_multiply));
-
-  return test;
-}
+BOOST_AUTO_TEST_SUITE_END()
