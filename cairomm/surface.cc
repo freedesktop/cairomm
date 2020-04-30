@@ -389,7 +389,7 @@ RecordingSurface::~RecordingSurface()
 
 RefPtr<RecordingSurface> RecordingSurface::create(Content content)
 {
-  auto cobject = cairo_recording_surface_create((cairo_content_t)content, NULL);
+  auto cobject = cairo_recording_surface_create((cairo_content_t)content, nullptr);
   check_status_and_throw_exception(cairo_surface_status(cobject));
   return RefPtr<RecordingSurface>(new RecordingSurface(cobject, true /* has reference */));
 }

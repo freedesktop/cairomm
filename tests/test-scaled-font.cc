@@ -83,10 +83,10 @@ BOOST_AUTO_TEST_CASE(test_ft_scaled_font)
   // using so just create an empty pattern and do the minimal substitution to
   // get a valid pattern
   auto pattern = FcPatternCreate();
-  FcConfigSubstitute (NULL, pattern, FcMatchPattern);
+  FcConfigSubstitute (nullptr, pattern, FcMatchPattern);
   FcDefaultSubstitute (pattern);
   FcResult result;
-  auto resolved = FcFontMatch (NULL, pattern, &result);
+  auto resolved = FcFontMatch (nullptr, pattern, &result);
   auto face = Cairo::FtFontFace::create(resolved);
   BOOST_CHECK(face);
 

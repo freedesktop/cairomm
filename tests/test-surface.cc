@@ -79,7 +79,7 @@ BOOST_AUTO_TEST_CASE(test_create_from_png)
 
   // now try the raw C function (deprecated) version
   png_file.open(PNG_STREAM_FILE);
-  surface = ImageSurface::create_from_png(&c_test_read_func, NULL);
+  surface = ImageSurface::create_from_png(&c_test_read_func, nullptr);
   png_file.close();
   BOOST_CHECK(c_test_read_func_called > 0);
 }
