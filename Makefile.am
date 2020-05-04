@@ -46,7 +46,6 @@ EXTRA_DIST = \
   meson_options.txt \
   cairommconfig.h.meson \
   MSVC_NMake/cairomm/meson.build \
-  MSVC_NMake/gendef/meson.build \
   cairomm/meson.build \
   data/meson.build \
   docs/reference/meson.build \
