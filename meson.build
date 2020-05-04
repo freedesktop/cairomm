@@ -115,13 +115,6 @@ else
 endif
 cairomm_requires = ' '.join(cairomm_requires)
 
-if is_msvc
-  # We must have Visual Studio 2017 15.7 or later...
-  assert(cpp_compiler.version().split('.')[0].to_int() >= 19 and \
-         cpp_compiler.version().split('.')[1].to_int() >= 15,
-         'Visual Studio 2017 15.7 or later is required')
-endif
-
 # Needed for M_PI on Visual Studio and some MinGW versions
 if host_machine.system() == 'windows'
   add_project_arguments('-D_USE_MATH_DEFINES', language: 'cpp')
