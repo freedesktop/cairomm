@@ -4,9 +4,8 @@
 # one is maintaining the NMake build files.
 
 # Generate .def files
-
 vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm\cairomm.def: $(GENDEF) $(cairomm_OBJS)
-	vs$(PDBVER)\$(CFG)\$(PLAT)\gendef.exe $@ $(CAIROMM_LIBNAME) vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm\*.obj
+	$(GENDEF) $@ $(CAIROMM_LIBNAME) $(@D)\*.obj
 
 # Generate pre-generated resources and configuration headers (builds from GIT)
 prep-git-build: pkg-ver.mak
