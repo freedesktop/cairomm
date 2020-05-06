@@ -33,8 +33,8 @@ $(CAIROMM_LIB): $(CAIROMM_DLL)
 # $(dependent_objects)
 # <<
 # 	@-if exist $@.manifest mt /manifest $@.manifest /outputresource:$@;2
-$(CAIROMM_DLL): vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm\cairomm.def $(cairomm_OBJS)
-	link /DLL $(LDFLAGS_NOLTCG) $(CAIRO_LIB) $(LIBSIGC_LIB) /implib:$(CAIROMM_LIB) /def:vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm\cairomm.def -out:$@ @<<
+$(CAIROMM_DLL): $(cairomm_OBJS) $(EXTRA_CAIROMM_DEPENDENCIES)
+	link /DLL $(LDFLAGS_NOLTCG) $(CAIRO_LIB) $(LIBSIGC_LIB) /implib:$(CAIROMM_LIB) $(EXTRA_CAIROMM_LDFLAG) -out:$@ @<<
 $(cairomm_OBJS)
 <<
 	@-if exist $@.manifest mt /manifest $@.manifest /outputresource:$@;2
@@ -47,9 +47,10 @@ $(cairomm_OBJS)
 # <<
 # 	@-if exist $@.manifest mt /manifest $@.manifest /outputresource:$@;1
 
-{.\gendef\}.cc{vs$(PDBVER)\$(CFG)\$(PLAT)\}.exe:
+{..\MSVC_NMake\gendef\}.cc{vs$(PDBVER)\$(CFG)\$(PLAT)\}.exe:
 	@if not exist $(@D)\gendef\ md $(@D)\gendef
-	$(CXX) $(CAIROMM_BASE_CFLAGS) $(CFLAGS) /Fo$(@D)\gendef\ /Fd$(@D)\gendef\ $< /link $(LDFLAGS) /out:$@
+	$(CXX) $(CFLAGS) /Fo$(@D)\gendef\ /Fd$(@D)\gendef\ $< /Fe$@ /link $(LDFLAGS)
+	@-if exist $@.manifest mt /manifest $@.manifest /outputresource:$@;1
 
 {..\examples\text\}.cc{vs$(PDBVER)\$(CFG)\$(PLAT)\}.exe:
 	@if not exist vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm-ex\ md vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm-ex

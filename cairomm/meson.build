@@ -1,7 +1,7 @@
 # cairomm
 
 # Input: cairomm_build_dep, cairomm_pcname, cairomm_libversion, cairomm_rc,
-#        is_msvc, gendef
+#        is_msvc
 # Output: source_h_files, cairomm_dep
 
 # There are no built source files in cairomm.
@@ -79,48 +79,14 @@ endif
 
 extra_include_dirs = ['..']
 
-if not is_msvc
-  cairomm_library = library(cairomm_pcname,
-    cairomm_cc, extra_cairomm_objects,
-    version: cairomm_libversion,
-    include_directories: extra_include_dirs,
-    cpp_args: cairomm_cpp_args,
-    dependencies: cairomm_build_dep,
-    install: true,
-  )
-else # is_msvc
-
-  # Run gendef.exe to get the .def file needed for obtaining
-  # the .lib file for the cairomm DLL.
-  cairomm_int_lib = static_library('cairomm-int',
-    cairomm_cc,
-    include_directories: extra_include_dirs,
-    cpp_args: cairomm_cpp_args,
-    dependencies: cairomm_build_dep,
-    install: false,
-  )
-
-  cairomm_def = custom_target('cairomm.def',
-    output: 'cairomm.def',
-    depends: cairomm_int_lib,
-    command: [ gendef,
-      '@OUTPUT@',
-      '@0@-@1@.dll'.format(cairomm_pcname, cairomm_libversion.split('.')[0]),
-      cairomm_int_lib.full_path(),
-    ],
-    install: false,
-  )
-  cairomm_extra_link_args = ['/def:@0@'.format(cairomm_def.full_path())]
-
-  cairomm_library = library(cairomm_pcname, extra_cairomm_objects,
-    objects: cairomm_int_lib.extract_all_objects(),
-    version: cairomm_libversion,
-    dependencies: cairomm_build_dep,
-    link_depends: cairomm_def,
-    link_args: cairomm_extra_link_args,
-    install: true,
-  )
-endif
+cairomm_library = library(cairomm_pcname,
+  cairomm_cc, extra_cairomm_objects,
+  version: cairomm_libversion,
+  include_directories: extra_include_dirs,
+  cpp_args: cairomm_cpp_args,
+  dependencies: cairomm_build_dep,
+  install: true,
+)
 
 # This is useful in the main project when cairomm is used as a subproject.
 # It's also used when building example programs and test programs.

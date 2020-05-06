@@ -39,7 +39,7 @@ namespace Cairo
  *
  * @since 1.4
  */
-class QuartzSurface : public Surface
+class CAIROMM_API QuartzSurface : public Surface
 {
 public:
 

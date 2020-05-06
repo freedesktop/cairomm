@@ -35,7 +35,7 @@ namespace Cairo
  *
  * @since 1.8
  */
-class QuartzFontFace : public FontFace
+class CAIROMM_API QuartzFontFace : public FontFace
 {
 public:
 

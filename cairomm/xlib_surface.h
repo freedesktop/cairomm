@@ -45,7 +45,7 @@ namespace Cairo
  * @note For this surface to be availabe, cairo must have been compiled with
  * support for XLib Surfaces
  */
-class XlibSurface : public Surface
+class CAIROMM_API XlibSurface : public Surface
 {
 public:
 

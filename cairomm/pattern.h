@@ -32,7 +32,7 @@ struct ColorStop
   double red, green, blue, alpha;
 };
 
-class Matrix;
+class CAIROMM_API Matrix;
 
 /**
  * Cairo::Pattern is the paint with which cairo draws. The primary use of
@@ -41,7 +41,7 @@ class Matrix;
  *
  * This is a reference-counted object that should be used via Cairo::RefPtr.
  */
-class Pattern
+class CAIROMM_API Pattern
 {
 protected:
   //Use derived constructors.
@@ -152,7 +152,7 @@ protected:
   cobject* m_cobject;
 };
 
-class SolidPattern : public Pattern
+class CAIROMM_API SolidPattern : public Pattern
 {
 protected:
 
@@ -205,7 +205,7 @@ public:
   ~SolidPattern() override;
 };
 
-class SurfacePattern : public Pattern
+class CAIROMM_API SurfacePattern : public Pattern
 {
 protected:
 
@@ -272,7 +272,7 @@ public:
   Filter get_filter() const;
 };
 
-class Gradient : public Pattern
+class CAIROMM_API Gradient : public Pattern
 {
 protected:
   //Use derived constructors.
@@ -346,7 +346,7 @@ protected:
   Gradient();
 };
 
-class LinearGradient : public Gradient
+class CAIROMM_API LinearGradient : public Gradient
 {
 protected:
 
@@ -394,7 +394,7 @@ public:
   static RefPtr<LinearGradient> create(double x0, double y0, double x1, double y1);
 };
 
-class RadialGradient : public Gradient
+class CAIROMM_API RadialGradient : public Gradient
 {
 protected:
 

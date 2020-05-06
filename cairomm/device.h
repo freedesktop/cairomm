@@ -53,7 +53,7 @@ namespace Cairo
  *
  * @since 1.10
  */
-class Device
+class CAIROMM_API Device
 {
 public:
   /** A convenience class for acquiring a Device object in an exception-safe

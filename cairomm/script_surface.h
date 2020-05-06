@@ -33,7 +33,7 @@ namespace Cairo {
  *
  * @since 1.12
  */
-class ScriptSurface : public Surface {
+class CAIROMM_API ScriptSurface : public Surface {
 public:
 
   /**

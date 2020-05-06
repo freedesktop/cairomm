@@ -48,7 +48,7 @@ namespace Cairo
  *
  * Context is a reference-counted object that should be used via Cairo::RefPtr.
  */
-class Context
+class CAIROMM_API Context
 {
 protected:
   explicit Context(const RefPtr<Surface>& target);

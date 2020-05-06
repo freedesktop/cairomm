@@ -6,8 +6,12 @@ Building cairomm with Visual Studio .NET 2015 or later
   the paths to headers and import libraries to Visual Studio, if they are not already in
   $(srcroot)/../vs$(VSVER)/$(Platform).
 * In a Visual Studio command prompt, go to $(srcroot)\MSVC_NMake
-* Build using nmake /f Makefile.vc CFG=[release|debug]
+* Build using nmake /f Makefile.vc CFG=[release|debug].
 * Run the tests
+* If it is inconvenient for you to re-build any software using
+  cairomm, you may need to pass in BUILD_COMPAT_LIB in your
+  NMake command line so that your application will continue to
+  run properly.
 
 Cedric Gustin
 08/18/2006

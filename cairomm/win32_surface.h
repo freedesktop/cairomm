@@ -40,7 +40,7 @@ namespace Cairo
  * @note For this Surface to be available, cairo must have been compiled with
  * Win32 support
  */
-class Win32Surface : public Surface
+class CAIROMM_API Win32Surface : public Surface
 {
 public:
 
@@ -124,7 +124,7 @@ public:
  *
  * @since 1.8
  */
-class Win32PrintingSurface : public Surface
+class CAIROMM_API Win32PrintingSurface : public Surface
 {
 public:
   explicit Win32PrintingSurface(cairo_surface_t* cobject, bool has_reference = false);

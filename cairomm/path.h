@@ -19,6 +19,8 @@
 #ifndef __CAIROMM_PATH_H
 #define __CAIROMM_PATH_H
 
+#include <cairommconfig.h>
+
 #include <cairomm/enums.h>
 #include <string>
 #include <cairo.h>
@@ -35,7 +37,7 @@ namespace Cairo
  * @todo There's currently no way to access the path data without reverting to
  * the C object (see cobj())
  */
-class Path
+class CAIROMM_API Path
 {
 public:
   //Path();

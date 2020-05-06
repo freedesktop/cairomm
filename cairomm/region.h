@@ -38,7 +38,7 @@ namespace Cairo
  *
  * @since: 1.10
  **/
-class Region
+class CAIROMM_API Region
 {
 private:
 

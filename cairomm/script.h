@@ -55,7 +55,7 @@ enum ScriptMode {
  *
  * @since 1.12
  */
-class Script : public Device {
+class CAIROMM_API Script : public Device {
 public:
 
   /**

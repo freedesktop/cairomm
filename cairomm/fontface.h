@@ -34,8 +34,8 @@
 namespace Cairo
 {
 
-class ScaledFont;
-class Context;
+class CAIROMM_API ScaledFont;
+class CAIROMM_API Context;
 
 /**
  * A FontFace represents a particular font at a particular weight, slant, and
@@ -45,7 +45,7 @@ class Context;
  * using the toy text API by way of Context::select_font_face(). The resulting
  * face can be accessed using Context::get_font_face().
  */
-class FontFace
+class CAIROMM_API FontFace
 {
 protected:
 
@@ -101,7 +101,7 @@ protected:
  * A simple font face used for the cairo 'toy' font API.
  * @since 1.8
  */
-class ToyFontFace : public FontFace
+class CAIROMM_API ToyFontFace : public FontFace
 {
 public:
 
@@ -204,7 +204,7 @@ protected:
  *
  * @since 1.8
  */
-class UserFontFace : public FontFace
+class CAIROMM_API UserFontFace : public FontFace
 {
 public:
 
@@ -397,7 +397,7 @@ private:
 // font system support
 #ifdef CAIRO_HAS_FT_FONT
 
-class FtFontFace : public FontFace
+class CAIROMM_API FtFontFace : public FontFace
 {
 public:
   /** Creates a new font face for the FreeType font backend from a pre-opened
