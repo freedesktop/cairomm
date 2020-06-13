@@ -13,13 +13,13 @@
 # 	$(CC)|$(CXX) $(cflags) /Fo$(destdir) /c @<<
 # $<
 # <<
-{..\cairomm\}.cc{vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm\}.obj::
-	@if not exist vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm\ md vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm
-	$(CXX) $(LIBCAIROMM_CFLAGS) $(CFLAGS_NOGL) /Fovs$(PDBVER)\$(CFG)\$(PLAT)\cairomm\ /Fdvs$(PDBVER)\$(CFG)\$(PLAT)\cairomm\ /c @<<
+{..\cairomm\}.cc{vs$(VSVER)\$(CFG)\$(PLAT)\cairomm\}.obj::
+	@if not exist vs$(VSVER)\$(CFG)\$(PLAT)\cairomm\ md vs$(VSVER)\$(CFG)\$(PLAT)\cairomm
+	$(CXX) $(LIBCAIROMM_CFLAGS) $(CFLAGS_NOGL) /Fovs$(VSVER)\$(CFG)\$(PLAT)\cairomm\ /Fdvs$(VSVER)\$(CFG)\$(PLAT)\cairomm\ /c @<<
 $<
 <<
 
-{.\cairomm\}.rc{vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm\}.res:
+{.\cairomm\}.rc{vs$(VSVER)\$(CFG)\$(PLAT)\cairomm\}.res:
 	@if not exist $(@D)\ md $(@D)
 	rc /fo$@ $<
 
@@ -47,46 +47,46 @@ $(cairomm_OBJS)
 # <<
 # 	@-if exist $@.manifest mt /manifest $@.manifest /outputresource:$@;1
 
-{..\MSVC_NMake\gendef\}.cc{vs$(PDBVER)\$(CFG)\$(PLAT)\}.exe:
+{..\MSVC_NMake\gendef\}.cc{vs$(VSVER)\$(CFG)\$(PLAT)\}.exe:
 	@if not exist $(@D)\gendef\ md $(@D)\gendef
 	$(CXX) $(CFLAGS) /Fo$(@D)\gendef\ /Fd$(@D)\gendef\ $< /Fe$@ /link $(LDFLAGS)
 	@-if exist $@.manifest mt /manifest $@.manifest /outputresource:$@;1
 
-{..\examples\text\}.cc{vs$(PDBVER)\$(CFG)\$(PLAT)\}.exe:
-	@if not exist vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm-ex\ md vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm-ex
+{..\examples\text\}.cc{vs$(VSVER)\$(CFG)\$(PLAT)\}.exe:
+	@if not exist vs$(VSVER)\$(CFG)\$(PLAT)\cairomm-ex\ md vs$(VSVER)\$(CFG)\$(PLAT)\cairomm-ex
 	@if not exist $(CAIROMM_LIB) $(MAKE) -f Makefile.vc CFG=$(CFG) $(CAIROMM_LIB)
 	$(CXX) $(CAIROMM_EX_CFLAGS) $(CFLAGS) /Fo$(@D)\cairomm-ex\ /Fd$(@D)\cairomm-ex\ $< /Fe$@ /link $(LDFLAGS) $(CAIROMM_LIB) $(LIBSIGC_LIB) $(CAIRO_LIB)
 	@-if exist $@.manifest mt /manifest $@.manifest /outputresource:$@;1
 
-{..\examples\surfaces\}.cc{vs$(PDBVER)\$(CFG)\$(PLAT)\}.exe:
-	@if not exist vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm-ex\ md vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm-ex
+{..\examples\surfaces\}.cc{vs$(VSVER)\$(CFG)\$(PLAT)\}.exe:
+	@if not exist vs$(VSVER)\$(CFG)\$(PLAT)\cairomm-ex\ md vs$(VSVER)\$(CFG)\$(PLAT)\cairomm-ex
 	@if not exist $(CAIROMM_LIB) $(MAKE) -f Makefile.vc CFG=$(CFG) $(CAIROMM_LIB)
 	$(CXX) $(CAIROMM_EX_CFLAGS) $(CFLAGS) /Fo$(@D)\cairomm-ex\ /Fd$(@D)\cairomm-ex\ $< /Fe$@ /link $(LDFLAGS) $(CAIROMM_LIB) $(LIBSIGC_LIB) $(CAIRO_LIB)
 	@-if exist $@.manifest mt /manifest $@.manifest /outputresource:$@;1
 
-{..\tests\}.cc{vs$(PDBVER)\$(CFG)\$(PLAT)\}.exe:
+{..\tests\}.cc{vs$(VSVER)\$(CFG)\$(PLAT)\}.exe:
 	@if not exist $(CAIROMM_LIB) $(MAKE) -f Makefile.vc CFG=$(CFG) $(CAIROMM_LIB)
-	@if not exist vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm-tests\ md vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm-tests
+	@if not exist vs$(VSVER)\$(CFG)\$(PLAT)\cairomm-tests\ md vs$(VSVER)\$(CFG)\$(PLAT)\cairomm-tests
 	$(CXX) $(CAIROMM_TEST_CFLAGS) $(CFLAGS) /Fo$(@D)\cairomm-tests\ /Fd$(@D)\cairomm-tests\ $< /Fe$@ /link $(LDFLAGS) $(CAIROMM_LIB) $(LIBSIGC_LIB) $(CAIRO_LIB)
 
 clean:
-	@-del /f /q vs$(PDBVER)\$(CFG)\$(PLAT)\*.exe
-	@-del /f /q vs$(PDBVER)\$(CFG)\$(PLAT)\*.dll
-	@-del /f /q vs$(PDBVER)\$(CFG)\$(PLAT)\*.pdb
-	@-del /f /q vs$(PDBVER)\$(CFG)\$(PLAT)\*.ilk
-	@-del /f /q vs$(PDBVER)\$(CFG)\$(PLAT)\*.exp
-	@-del /f /q vs$(PDBVER)\$(CFG)\$(PLAT)\*.lib
-	@-if exist vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm-tests del /f /q vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm-tests\*.obj
-	@-if exist vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm-tests del /f /q vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm-tests\*.pdb
-	@-del /f /q vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm-ex\*.obj
-	@-del /f /q vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm-ex\*.pdb
-	@-del /f /q vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm\*.res
-	@-del /f /q vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm\*.def
-	@-del /f /q vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm\*.obj
-	@-del /f /q vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm\*.pdb
-	@-del /f /q vs$(PDBVER)\$(CFG)\$(PLAT)\gendef\*.obj
-	@-del /f /q vs$(PDBVER)\$(CFG)\$(PLAT)\gendef\*.pdb
-	@-if exist vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm-tests rd vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm-tests
-	@-rd vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm-ex
-	@-rd vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm
-	@-rd vs$(PDBVER)\$(CFG)\$(PLAT)\gendef
+	@-del /f /q vs$(VSVER)\$(CFG)\$(PLAT)\*.exe
+	@-del /f /q vs$(VSVER)\$(CFG)\$(PLAT)\*.dll
+	@-del /f /q vs$(VSVER)\$(CFG)\$(PLAT)\*.pdb
+	@-del /f /q vs$(VSVER)\$(CFG)\$(PLAT)\*.ilk
+	@-del /f /q vs$(VSVER)\$(CFG)\$(PLAT)\*.exp
+	@-del /f /q vs$(VSVER)\$(CFG)\$(PLAT)\*.lib
+	@-if exist vs$(VSVER)\$(CFG)\$(PLAT)\cairomm-tests del /f /q vs$(VSVER)\$(CFG)\$(PLAT)\cairomm-tests\*.obj
+	@-if exist vs$(VSVER)\$(CFG)\$(PLAT)\cairomm-tests del /f /q vs$(VSVER)\$(CFG)\$(PLAT)\cairomm-tests\*.pdb
+	@-del /f /q vs$(VSVER)\$(CFG)\$(PLAT)\cairomm-ex\*.obj
+	@-del /f /q vs$(VSVER)\$(CFG)\$(PLAT)\cairomm-ex\*.pdb
+	@-del /f /q vs$(VSVER)\$(CFG)\$(PLAT)\cairomm\*.res
+	@-del /f /q vs$(VSVER)\$(CFG)\$(PLAT)\cairomm\*.def
+	@-del /f /q vs$(VSVER)\$(CFG)\$(PLAT)\cairomm\*.obj
+	@-del /f /q vs$(VSVER)\$(CFG)\$(PLAT)\cairomm\*.pdb
+	@-del /f /q vs$(VSVER)\$(CFG)\$(PLAT)\gendef\*.obj
+	@-del /f /q vs$(VSVER)\$(CFG)\$(PLAT)\gendef\*.pdb
+	@-if exist vs$(VSVER)\$(CFG)\$(PLAT)\cairomm-tests rd vs$(VSVER)\$(CFG)\$(PLAT)\cairomm-tests
+	@-rd vs$(VSVER)\$(CFG)\$(PLAT)\cairomm-ex
+	@-rd vs$(VSVER)\$(CFG)\$(PLAT)\cairomm
+	@-rd vs$(VSVER)\$(CFG)\$(PLAT)\gendef
