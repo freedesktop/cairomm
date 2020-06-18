@@ -4,7 +4,7 @@
 # one is maintaining the NMake build files.
 
 # Generate .def files
-vs$(PDBVER)\$(CFG)\$(PLAT)\cairomm\cairomm.def: $(GENDEF) $(cairomm_OBJS)
+vs$(VSVER)\$(CFG)\$(PLAT)\cairomm\cairomm.def: $(GENDEF) $(cairomm_OBJS)
 	$(GENDEF) $@ $(CAIROMM_LIBNAME) $(@D)\*.obj
 
 # Generate pre-generated resources and configuration headers (builds from GIT)

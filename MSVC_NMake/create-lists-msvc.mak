@@ -38,10 +38,10 @@ NULL=
 !if [call create-lists.bat header cairomm.mak cairomm_OBJS]
 !endif
 
-!if [for %c in ($(cairomm_cc)) do @if "%~xc" == ".cc" @call create-lists.bat file cairomm.mak vs^$(PDBVER)\^$(CFG)\^$(PLAT)\cairomm\%~nc.obj]
+!if [for %c in ($(cairomm_cc)) do @if "%~xc" == ".cc" @call create-lists.bat file cairomm.mak vs^$(VSVER)\^$(CFG)\^$(PLAT)\cairomm\%~nc.obj]
 !endif
 
-!if [@call create-lists.bat file cairomm.mak vs^$(PDBVER)\^$(CFG)\^$(PLAT)\cairomm\cairomm.res]
+!if [@call create-lists.bat file cairomm.mak vs^$(VSVER)\^$(CFG)\^$(PLAT)\cairomm\cairomm.res]
 !endif
 
 !if [call create-lists.bat footer cairomm.mak]
@@ -50,10 +50,10 @@ NULL=
 !if [call create-lists.bat header cairomm.mak cairomm_ex]
 !endif
 
-!if [for %c in (..\examples\text\*.cc) do @call create-lists.bat file cairomm.mak vs^$(PDBVER)\^$(CFG)\^$(PLAT)\%~nc.exe]
+!if [for %c in (..\examples\text\*.cc) do @call create-lists.bat file cairomm.mak vs^$(VSVER)\^$(CFG)\^$(PLAT)\%~nc.exe]
 !endif
 
-!if [for %c in (..\examples\surfaces\*.cc) do @call create-lists.bat file cairomm.mak vs^$(PDBVER)\^$(CFG)\^$(PLAT)\%~nc.exe]
+!if [for %c in (..\examples\surfaces\*.cc) do @call create-lists.bat file cairomm.mak vs^$(VSVER)\^$(CFG)\^$(PLAT)\%~nc.exe]
 !endif
 
 !if [call create-lists.bat footer cairomm.mak]
@@ -62,7 +62,7 @@ NULL=
 !if [call create-lists.bat header cairomm.mak cairomm_tests]
 !endif
 
-!if [for %c in (..\tests\*.cc) do @call create-lists.bat file cairomm.mak vs^$(PDBVER)\^$(CFG)\^$(PLAT)\%~nc.exe]
+!if [for %c in (..\tests\*.cc) do @call create-lists.bat file cairomm.mak vs^$(VSVER)\^$(CFG)\^$(PLAT)\%~nc.exe]
 !endif
 
 !if [call create-lists.bat footer cairomm.mak]

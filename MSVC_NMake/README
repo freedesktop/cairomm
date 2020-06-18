@@ -5,6 +5,12 @@ Building cairomm with Visual Studio .NET 2015 or later
 * Install the latest Win32 GTK+ Development files from ftp://ftp.gnome.org/pub/GNOME/binaries/win32/gtk+/ and add
   the paths to headers and import libraries to Visual Studio, if they are not already in
   $(srcroot)/../vs$(VSVER)/$(Platform).
+* It is recommended (and possibly required) that you build cairomm and software that depends on cairomm with the
+  same compiler, even though Microsoft tried hard to make things API and ABI compatible between Visual Studio
+  2015, 2017 and 2019, so the build distinguishes between these versions with 'vc140' (2015), 'vc141' (2017) and
+  'vc142' (2019) in the output DLL and .lib filenames, as per the toolset version as Microsoft defined.  If using
+  'vc140' in the DLL and .lib names are desired (such as when rebuilding software that depends on cairomm is
+  not convenient), pass in 'USE_COMPAT_LIBS=1' in your NMake command line (note that doing this is not recommended).
 * In a Visual Studio command prompt, go to $(srcroot)\MSVC_NMake
 * Build using nmake /f Makefile.vc CFG=[release|debug].
 * Run the tests
