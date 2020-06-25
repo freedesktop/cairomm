@@ -15,5 +15,5 @@ Description: C++ binding for the cairo graphics library
 Version: @PACKAGE_VERSION@
 URL: http://www.cairographics.org/cairomm/
 Requires: @CAIROMM_MODULES@
-Libs: -L${libdir} -lcairomm-@CAIROMM_API_VERSION@ @CAIROMM_EXTRA_LIBS@
+Libs: -L${libdir} -lcairomm@MSVC_TOOLSET_VER@-@CAIROMM_API_VERSION@ @CAIROMM_EXTRA_LIBS@
 Cflags: -I${includedir}/@CAIROMM_MODULE_NAME@ -I${libdir}/@CAIROMM_MODULE_NAME@/include

@@ -11,6 +11,9 @@ Building cairomm with Visual Studio .NET 2015 or later
   'vc142' (2019) in the output DLL and .lib filenames, as per the toolset version as Microsoft defined.  If using
   'vc140' in the DLL and .lib names are desired (such as when rebuilding software that depends on cairomm is
   not convenient), pass in 'USE_COMPAT_LIBS=1' in your NMake command line (note that doing this is not recommended).
+  For the Meson builds, pass in the option '-Dmsvc14x-parallel-installable=false' to the Meson configure command line
+  to avoid having the toolset version in the final DLL and .lib filenames; again, this is only recommended if it is
+  inconvenient to re-build the dependent code.
 * In a Visual Studio command prompt, go to $(srcroot)\MSVC_NMake
 * Build using nmake /f Makefile.vc CFG=[release|debug].
 * Run the tests

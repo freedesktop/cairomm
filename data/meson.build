@@ -2,7 +2,7 @@
 
 # Input: install_prefix, install_libdir, install_datadir, install_includedir,
 #        install_pkgconfigdir, cairomm_pcname, cairomm_api_version,
-#        cairomm_requires, cairo_dep
+#        cairomm_requires, cairo_dep, msvc14x_toolset_ver
 # Output: -
 
 pkg_conf_data = configuration_data()
@@ -17,6 +17,7 @@ pkg_conf_data.set('CAIROMM_MODULE_NAME', cairomm_pcname)
 pkg_conf_data.set('CAIROMM_API_VERSION', cairomm_api_version)
 pkg_conf_data.set('CAIROMM_MODULES', cairomm_requires)
 pkg_conf_data.set('CAIROMM_EXTRA_LIBS', cairomm_extra_libs)
+pkg_conf_data.set('MSVC_TOOLSET_VER', msvc14x_toolset_ver)
 
 configure_file(
   input: cairomm_pcname + '.pc.in',

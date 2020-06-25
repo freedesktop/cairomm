@@ -1,7 +1,7 @@
 # cairomm
 
 # Input: cairomm_build_dep, cairomm_pcname, cairomm_libversion, cairomm_rc,
-#        is_msvc
+#        is_msvc, cairomm_libname
 # Output: source_h_files, cairomm_dep
 
 # There are no built source files in cairomm.
@@ -79,7 +79,7 @@ endif
 
 extra_include_dirs = ['..']
 
-cairomm_library = library(cairomm_pcname,
+cairomm_library = library(cairomm_libname,
   cairomm_cc, extra_cairomm_objects,
   version: cairomm_libversion,
   include_directories: extra_include_dirs,
