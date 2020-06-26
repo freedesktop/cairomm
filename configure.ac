@@ -48,6 +48,7 @@ PKG_PROG_PKG_CONFIG
 
 AC_SUBST([CAIROMM_EXTRA_LIBS], [''])
 AC_SUBST([CAIROMM_MODULES], ['cairo >= 1.10.0 sigc++-2.0 >= 2.5.1'])
+AC_SUBST([MSVC_TOOLSET_VER], [''])
 cairomm_allmodules=$CAIROMM_MODULES
 CAIROMM_INSTALL_PC='data/cairomm-1.0.pc'
 
