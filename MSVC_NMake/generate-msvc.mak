@@ -11,24 +11,28 @@ vs$(VSVER)\$(CFG)\$(PLAT)\cairomm\cairomm.def: $(GENDEF) $(cairomm_OBJS)
 prep-git-build: pkg-ver.mak
 	$(MAKE) /f Makefile.vc CFG=$(CFG) GENERATE_VERSIONED_FILES=1 cairomm\cairomm.rc cairomm\cairommconfig.h
 
-cairomm\cairomm.rc: pkg-ver.mak cairomm\cairomm.rc.in
-	@echo Generating $@...
-	@copy $@.in $@
-	@$(PERL) -pi.bak -e "s/\@CAIROMM_MAJOR_VERSION\@/$(PKG_MAJOR_VERSION)/g" $@
-	@$(PERL) -pi.bak -e "s/\@CAIROMM_MINOR_VERSION\@/$(PKG_MINOR_VERSION)/g" $@
-	@$(PERL) -pi.bak -e "s/\@CAIROMM_MICRO_VERSION\@/$(PKG_MICRO_VERSION)/g" $@
-	@$(PERL) -pi.bak -e "s/\@VERSION\@/$(PKG_MAJOR_VERSION).$(PKG_MINOR_VERSION).$(PKG_MICRO_VERSION)/g" $@
-	@del $@.bak
+cairomm\cairomm.rc: ..\configure.ac cairomm\cairomm.rc.in
+	@if not "$(DO_REAL_GEN)" == "1" if exist pkg-ver.mak del pkg-ver.mak
+	@if not exist pkg-ver.mak $(MAKE) /f Makefile.vc CFG=$(CFG) prep-git-build
+	@if "$(DO_REAL_GEN)" == "1" echo Generating $@...
+	@if "$(DO_REAL_GEN)" == "1" copy $@.in $@
+	@if "$(DO_REAL_GEN)" == "1" $(PERL) -pi.bak -e "s/\@CAIROMM_MAJOR_VERSION\@/$(PKG_MAJOR_VERSION)/g" $@
+	@if "$(DO_REAL_GEN)" == "1" $(PERL) -pi.bak -e "s/\@CAIROMM_MINOR_VERSION\@/$(PKG_MINOR_VERSION)/g" $@
+	@if "$(DO_REAL_GEN)" == "1" $(PERL) -pi.bak -e "s/\@CAIROMM_MICRO_VERSION\@/$(PKG_MICRO_VERSION)/g" $@
+	@if "$(DO_REAL_GEN)" == "1" $(PERL) -pi.bak -e "s/\@VERSION\@/$(PKG_MAJOR_VERSION).$(PKG_MINOR_VERSION).$(PKG_MICRO_VERSION)/g" $@
+	@if "$(DO_REAL_GEN)" == "1" del $@.bak
 
 # You may change CAIROMM_EXCEPTIONS_ENABLED if you know what you are doing
-cairomm\cairommconfig.h: pkg-ver.mak ..\cairommconfig.h.in
-	@echo Generating $@...
-	@copy ..\$(@F).in $@
-	@$(PERL) -pi.bak -e "s/\#undef CAIROMM_EXCEPTIONS_ENABLED/\#define CAIROMM_EXCEPTIONS_ENABLED 1/g" $@
-	@$(PERL) -pi.bak -e "s/\#undef CAIROMM_MAJOR_VERSION/\#define CAIROMM_MAJOR_VERSION $(PKG_MAJOR_VERSION)/g" $@
-	@$(PERL) -pi.bak -e "s/\#undef CAIROMM_MINOR_VERSION/\#define CAIROMM_MINOR_VERSION $(PKG_MINOR_VERSION)/g" $@
-	@$(PERL) -pi.bak -e "s/\#undef CAIROMM_MICRO_VERSION/\#define CAIROMM_MICRO_VERSION $(PKG_MICRO_VERSION)/g" $@
-	@del $@.bak
+cairomm\cairommconfig.h: ..\configure.ac ..\cairommconfig.h.in
+	@if not "$(DO_REAL_GEN)" == "1" if exist pkg-ver.mak del pkg-ver.mak
+	@if not exist pkg-ver.mak $(MAKE) /f Makefile.vc CFG=$(CFG) prep-git-build
+	@if "$(DO_REAL_GEN)" == "1" echo Generating $@...
+	@if "$(DO_REAL_GEN)" == "1" copy ..\$(@F).in $@
+	@if "$(DO_REAL_GEN)" == "1" $(PERL) -pi.bak -e "s/\#undef CAIROMM_EXCEPTIONS_ENABLED/\#define CAIROMM_EXCEPTIONS_ENABLED 1/g" $@
+	@if "$(DO_REAL_GEN)" == "1" $(PERL) -pi.bak -e "s/\#undef CAIROMM_MAJOR_VERSION/\#define CAIROMM_MAJOR_VERSION $(PKG_MAJOR_VERSION)/g" $@
+	@if "$(DO_REAL_GEN)" == "1" $(PERL) -pi.bak -e "s/\#undef CAIROMM_MINOR_VERSION/\#define CAIROMM_MINOR_VERSION $(PKG_MINOR_VERSION)/g" $@
+	@if "$(DO_REAL_GEN)" == "1" $(PERL) -pi.bak -e "s/\#undef CAIROMM_MICRO_VERSION/\#define CAIROMM_MICRO_VERSION $(PKG_MICRO_VERSION)/g" $@
+	@if "$(DO_REAL_GEN)" == "1" del $@.bak
 
 pkg-ver.mak: ..\configure.ac
 	@echo Generating version info Makefile Snippet...
