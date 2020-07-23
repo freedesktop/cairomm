@@ -77,12 +77,13 @@ toy-text.png
 user-font.png
 
 # Windows
-*.exe
-*.user
-*.ncb
-*.suo
-Debug
-Release
+MSVC_NMake/vs12/
+MSVC_NMake/vs14/
+MSVC_NMake/vs15/
+MSVC_NMake/vs16/
+MSVC_NMake/cairomm/cairommconfig.h
+MSVC_NMake/cairomm/cairomm.rc
+MSVC_NMake/pkg-ver.mak
 
 # untracked/
 untracked/build_scripts/
