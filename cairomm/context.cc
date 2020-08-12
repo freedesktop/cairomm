@@ -701,6 +701,21 @@ RefPtr<const Pattern> Context::get_source() const
   return RefPtr<const Pattern>::cast_const (get_pattern_wrapper (pattern));
 }
 
+RefPtr<SurfacePattern> Context::get_source_for_surface()
+{
+  auto pattern = cairo_get_source(cobj());
+  check_object_status_and_throw_exception(*this);
+  auto pattern_type = cairo_pattern_get_type(pattern);
+  if (pattern_type != CAIRO_PATTERN_TYPE_SURFACE)
+    return {};
+  return RefPtr<SurfacePattern>(new SurfacePattern(pattern, false /* does not have reference */));
+}
+
+RefPtr<const SurfacePattern> Context::get_source_for_surface() const
+{
+  return const_cast<Context*>(this)->get_source_for_surface();
+}
+
 double Context::get_tolerance() const
 {
   const auto result = cairo_get_tolerance(const_cast<cobject*>(cobj()));
