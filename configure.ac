@@ -90,7 +90,7 @@ AS_IF([test "x$ENABLE_TESTS" = xyes],
 #So we resort to hugly hacks to detect the version of
 #boost that is installed.
 #######################################################
-    AX_BOOST_BASE([1.33.1])
+    AX_BOOST_BASE([1.63.0])
     AX_BOOST_UNIT_TEST_FRAMEWORK
 
     dnl AX_BOOST_BASE defines a --with-boost[=DIR] option that sets

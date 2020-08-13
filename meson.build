@@ -140,7 +140,7 @@ xsltproc = find_program('xsltproc', required: build_documentation)
 USE_SHARED_BOOST = get_option('boost-shared') # Use shared Boost::Test?
 
 boost_unit_test_framework_dep = dependency('boost', modules: 'unit_test_framework',
-  static: not USE_SHARED_BOOST, version: '>=1.33.1', required: false)
+  static: not USE_SHARED_BOOST, version: '>=1.63.0', required: false)
 
 fontconfig_dep = dependency('fontconfig', required: false)
 test_dep = [ boost_unit_test_framework_dep, fontconfig_dep]

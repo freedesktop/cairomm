@@ -10,7 +10,7 @@
 #include <iostream>
 #include <boost/test/unit_test.hpp>
 #include <boost/test/test_tools.hpp>
-#include <boost/test/floating_point_comparison.hpp>
+#include <boost/test/tools/floating_point_comparison.hpp>
 using namespace boost::unit_test;
 #include <cairomm/fontface.h>
 #include <cairomm/scaledfont.h>
