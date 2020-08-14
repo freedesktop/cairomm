@@ -1,3 +1,6 @@
+#Where to find the header files needed by the source files:
+local_cppflags = -I$(top_srcdir) @CAIROMM_CFLAGS@
+
 if AUTOTESTS
 
 # build automated 'tests'
@@ -11,7 +14,8 @@ test_scaled_font_SOURCES=test-scaled-font.cc
 test_font_options_SOURCES=test-font-options.cc
 test_matrix_SOURCES=test-matrix.cc
 
-test_surface_CPPFLAGS=-DPNG_STREAM_FILE=\"$(srcdir)/png-stream-test.png\"
+local_cppflags += -DBOOST_TEST_MAIN
+test_surface_CPPFLAGS = $(local_cppflags) -DPNG_STREAM_FILE=\"$(srcdir)/png-stream-test.png\"
 
 else
 
@@ -20,8 +24,7 @@ TESTS=
 
 endif
 
-#Where to find the header files needed by the source files:
-INCLUDES =  -I$(top_srcdir) @CAIROMM_CFLAGS@
+AM_CPPFLAGS = $(local_cppflags)
 
 #The libraries that the executable needs to link against:
 LIBS = $(top_builddir)/cairomm/libcairomm-1.0.la @LIBS@ @CAIROMM_LIBS@ @BOOST_UNIT_TEST_FRAMEWORK_STATIC_LIB@

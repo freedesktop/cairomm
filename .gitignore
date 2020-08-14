@@ -53,7 +53,12 @@ stamp-h?
 /tests/test-font-options
 /tests/test-matrix
 /tests/test-user-font
+/tests/*.log
+/tests/*.trs
+/tests/test.pdf
+/tests/test.ps
 
+/build/compile
 /build/config.*
 /build/depcomp
 /build/install-sh
@@ -64,6 +69,7 @@ stamp-h?
 /build/generate-binding.am
 /build/libtool.m4
 /build/lt*.m4
+/build/test-driver
 /releases/
 /tags
 

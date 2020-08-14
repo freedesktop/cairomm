@@ -62,7 +62,6 @@ do
   ])
 done
 AC_SUBST([CAIROMM_INSTALL_PC])
-PKG_CHECK_MODULES([CAIROMM], [$cairomm_allmodules])
 
 MM_ARG_ENABLE_DOCUMENTATION
 MM_ARG_WITH_TAGFILE_DOC([libstdc++.tag], [mm-common-libstdc++])
@@ -90,16 +89,18 @@ AS_IF([test "x$ENABLE_TESTS" = xyes],
 #So we resort to hugly hacks to detect the version of
 #boost that is installed.
 #######################################################
+    cairomm_allmodules="$cairomm_allmodules fontconfig"
     AX_BOOST_BASE([1.63.0])
     AX_BOOST_UNIT_TEST_FRAMEWORK
 
-    dnl AX_BOOST_BASE defines a --with-boost[=DIR] option that sets
-    dnl $ac_boost_path as a custom boost prefix, so use that if it was specified
-    AS_IF([test "x$ac_boost_path" != x],
-          [for i in "$ac_boost_path/lib/libboost_unit_test_framework.a" \
-                    "$ac_boost_path/lib/libboost_unit_test_framework-st.a" \
-                    "$ac_boost_path/libboost_unit_test_framework.a" \
-                    "$ac_boost_path/libboost_unit_test_framework-st.a"
+    dnl AX_BOOST_BASE sets $BOOST_LDFLAGS as the boost library directory,
+    dnl so use that if it is available.
+    AS_IF([test "x$BOOST_LDFLAGS" != x],
+          [boost_lib_dir="${BOOST_LDFLAGS#-L}" # Remove -L prefix
+           for i in "$boost_lib_dir/lib/libboost_unit_test_framework.a" \
+                    "$boost_lib_dir/lib/libboost_unit_test_framework-st.a" \
+                    "$boost_lib_dir/libboost_unit_test_framework.a" \
+                    "$boost_lib_dir/libboost_unit_test_framework-st.a"
            do
                AS_IF([test -f "$i"], [BOOST_UNIT_TEST_FRAMEWORK_STATIC_LIB=$i; break])
            done],
@@ -119,8 +120,10 @@ using --with-boost=/path/to/lib])])
     AC_MSG_NOTICE([disabled support of automated tests])
 ])
 AC_SUBST([BOOST_UNIT_TEST_FRAMEWORK_STATIC_LIB])
-
 AM_CONDITIONAL([AUTOTESTS], [test "x$ENABLE_TESTS" = xyes])
+
+PKG_CHECK_MODULES([CAIROMM], [$cairomm_allmodules])
+
 CAIROMM_ARG_ENABLE_API_EXCEPTIONS
 
 AC_CONFIG_FILES([Makefile
