@@ -1,3 +1,41 @@
+1.14.0 (stable):
+
+The tarball for 1.14.0 has been created with 'meson dist'.
+If you build with Autotools from the tarball, please read the relevant
+part of the README file.
+
+Cairo:
+* Add Context::get_source_for_surface()
+  (Kjell Ahlstedt) Issue #5 (Ian Britten)
+
+Build:
+* Fix the build with MinGW headers
+  (Kalev Lember) Bug #92112
+* enums.h: Guard the FT-specific include and the enum with an ifdef
+  (John Ralls) Bug #100894
+* Add NMake Makefiles
+  Remove Visual Studio 2013 projects
+  (Chun-wei Fan) Issue #17, merge request !3, !6, !11, !12
+* Add support for building with Meson
+  (Kjell Ahlstedt, Chun-wei Fan) Merge request !2, !9
+* Use __declspec(dllexport) when building cairomm on Visual Studio
+  Stop using gendef.exe by default
+  (Chun-wei Fan) Merge request !4
+* docs/reference/: Update for Doxygen >= 1.8.16
+  (Kjell Ahlstedt)
+
+Tests:
+* Update the source code
+  (Kjell Ahlstedt, Chun-wei Fan) Merge request !1
+* Don't include deprecated Boost header files
+  Fix tests in Autotools builds
+  (Kjell Ahlstedt)
+
+Documentation:
+* README: Update with instructions for building cairomm
+  (Kjell Ahlstedt)
+
+
 1.13.1 (unstable):
 
 * Added RecordingSurface, wrapping cairo_recording_surface.
