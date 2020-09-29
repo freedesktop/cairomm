@@ -1,7 +1,7 @@
 # cairomm
 
 # Input: cairomm_build_dep, cairomm_pcname, cairomm_libversion, cairomm_rc,
-#        is_msvc, cairomm_libname
+#        is_msvc, cairomm_libname, macos_darwin_versions
 # Output: source_h_files, cairomm_dep
 
 # There are no built source files in cairomm.
@@ -82,6 +82,7 @@ extra_include_dirs = ['..']
 cairomm_library = library(cairomm_libname,
   cairomm_cc, extra_cairomm_objects,
   version: cairomm_libversion,
+  darwin_versions: macos_darwin_versions,
   include_directories: extra_include_dirs,
   cpp_args: cairomm_cpp_args,
   dependencies: cairomm_build_dep,
