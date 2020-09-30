@@ -1,3 +1,18 @@
+1.14.2 (stable):
+
+The tarball for 1.14.2 has been created with 'meson dist'.
+If you build with Autotools from the tarball, please read the relevant
+part of the README file.
+
+Build:
+* Meson build: Fix versioning on macOS
+  (Kjell Ahlstedt, Tom Schoonjans)
+* Require cairo >= 1.12.0
+  Not a new requirement, but now it's specified in configure.ac and
+  meson.build, so a failure to meet it is noticed earlier when building
+  (Kjell Ahlstedt)
+
+
 1.14.0 (stable):
 
 The tarball for 1.14.0 has been created with 'meson dist'.
