@@ -23,8 +23,10 @@
 #ifdef CAIROMM_DLL
 # if defined(CAIROMM_BUILD)
 #  define CAIROMM_API __declspec(dllexport)
-# else
+# elif !defined (__GNUC__)
 #  define CAIROMM_API __declspec(dllimport)
+# else /* don't dllimport classes/methods on GCC/MinGW */
+#  define CAIROMM_API
 # endif
 /* Build a static or non-native-Windows library */
 #else
