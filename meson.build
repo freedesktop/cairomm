@@ -6,7 +6,8 @@ project('cairomm', 'cpp',
   default_options: [
     'cpp_std=c++11',
   ],
-  meson_version: '>= 0.50.0', # required for python3.path()
+  meson_version: '>= 0.54.0', # required for meson.override_dependency()
+                              # and dep.get_variable(internal:)
 )
 
 cairomm_api_version = '1.0'
@@ -274,6 +275,19 @@ if not meson.is_subproject()
     project_source_root,
     'untracked' / 'build_scripts',
   )
+else
+  # This is a subproject.
+  cairomm_dep = declare_dependency(
+    dependencies: cairomm_own_dep,
+    variables: {
+      'doxytagfile': tag_file.full_path(),
+      'htmlrefdir': install_prefix / install_docdir / 'reference' / 'html',
+      'htmlrefpub': 'http://www.cairographics.org/documentation/cairomm/reference'
+    }
+  )
+
+  # A main project that looks for cairomm_pcname.pc shall find cairomm_dep.
+  meson.override_dependency(cairomm_pcname, cairomm_dep)
 endif
 
 # Print a summary.

@@ -33,6 +33,9 @@ foreach cairomm_mod : ['ft', 'pdf', 'png', 'ps', 'quartz', 'quartz-font',
   # Install the module only if there is a corresponding cairo module.
   if cairo_dep.type_name() == 'pkgconfig'
     do_install = dependency('cairo-' + cairomm_mod, required: false).found()
+  elif cairo_dep.type_name() == 'internal'
+    do_install = dependency('cairo-' + cairomm_mod, fallback: 'cairo',
+                            required: false).found()
   else
     if cairomm_mod == 'png'
       do_install = cpp_compiler.has_function('cairo_surface_write_to_png',

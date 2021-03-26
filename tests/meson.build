@@ -1,6 +1,6 @@
 # tests
 
-# input: cairomm_dep, build_tests, can_test, test_dep, USE_SHARED_BOOST
+# input: cairomm_own_dep, build_tests, can_test, test_dep, USE_SHARED_BOOST
 
 cairomm_tests_extra_cppargs = []
 if USE_SHARED_BOOST
@@ -34,7 +34,7 @@ if can_test
     boost_test_modname_flag = [ '-DBOOST_TEST_MODULE=@0@'.format(ex[1]) ]
     exe_file = executable(ex_name, ex_sources,
       cpp_args: ex[3] + boost_test_modname_flag + cairomm_tests_extra_cppargs,
-      dependencies: [cairomm_dep, test_dep],
+      dependencies: [cairomm_own_dep, test_dep],
       gui_app: false,
       build_by_default: build_tests,
     )

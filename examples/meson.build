@@ -1,6 +1,6 @@
 # examples
 
-# input: cairomm_dep, build_examples
+# input: cairomm_own_dep, build_examples
 
 examples = [
 # [[dir-name], exe-name, [sources]]
@@ -26,7 +26,7 @@ foreach ex : examples
 
   executable(ex_name, ex_sources,
     cpp_args: '-DCAIROMM_DISABLE_DEPRECATED',
-    dependencies: cairomm_dep,
+    dependencies: cairomm_own_dep,
     gui_app: false,
     build_by_default: build_examples
   )

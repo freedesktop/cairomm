@@ -50,6 +50,8 @@ EXTRA_DIST = \
   data/meson.build \
   docs/reference/meson.build \
   examples/meson.build \
+  subprojects/cairo.wrap \
+  subprojects/sigc++-2.0.wrap \
   tests/meson.build \
   untracked/README
 
