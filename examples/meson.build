@@ -27,6 +27,7 @@ foreach ex : examples
   executable(ex_name, ex_sources,
     cpp_args: '-DCAIROMM_DISABLE_DEPRECATED',
     dependencies: cairomm_own_dep,
+    implicit_include_directories: false,
     gui_app: false,
     build_by_default: build_examples
   )
