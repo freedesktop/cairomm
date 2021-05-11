@@ -34,14 +34,14 @@ namespace Cairo
 
 /** 
  */
-class CAIROMM_API logic_error: public std::logic_error
+class logic_error: public std::logic_error
 {
 public:
-  explicit logic_error(ErrorStatus status);
-  ~logic_error() noexcept override;
+  CAIROMM_API explicit logic_error(ErrorStatus status);
+  CAIROMM_API ~logic_error() noexcept override;
 
   //virtual const char* what() const noexcept;
-  ErrorStatus get_status_code() const;
+  CAIROMM_API ErrorStatus get_status_code() const;
 
 private:
   ErrorStatus m_status;
