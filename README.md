@@ -6,7 +6,7 @@ See https://www.cairographics.org/cairomm/
 See the examples directory for example code.
 
 Use pkg-config to discover the necessary include and linker arguments. For instance,
-  pkg-config cairomm-1.16 --cflags --libs
+  `pkg-config cairomm-1.16 --cflags --libs`
 If you build with Autotools, ideally you would use PKG_CHECK_MODULES in your
 configure.ac file.
 
@@ -23,9 +23,10 @@ See MSVC_NMake/README
 ## Building from a release tarball
 
 Extract the tarball and go to the extracted directory:
+```
   $ tar xf cairomm-@CAIROMM_VERSION@.tar.xz
   $ cd cairomm-@CAIROMM_VERSION@
-
+```
 It's easiest to build with Meson, if the tarball was made with Meson,
 and to build with Autotools, if the tarball was made with Autotools.
 Then you don't have to use maintainer-mode.
@@ -38,31 +39,40 @@ of untracked/.
 
 Don't call the builddir 'build'. There is a directory called 'build' with
 files used by Autotools.
-
+```
   $ meson --prefix /some_directory --libdir lib your_builddir .
   $ cd your_builddir
-
+```
 If the tarball was made with Autotools, you must enable maintainer-mode:
+```
   $ meson configure -Dmaintainer-mode=true
-
+```
 Then, regardless of how the tarball was made:
+```
   $ ninja
   $ ninja install
 You can run the tests like so:
   $ ninja test
+  ```
 
 ### Building from a tarball with Autotools
 
 If the tarball was made with Autotools:
+```
   $ ./configure --prefix=/some_directory
+  ```
 If the tarball was made with Meson, you must enable maintainer-mode:
+```
   $ ./autogen.sh --prefix=/some_directory
+  ```
 
 Then, regardless of how the tarball was made:
+```
   $ make
   $ make install
 You can build the examples and tests, and run the tests, like so:
   $ make check
+  ```
 
 ## Building from git
 
@@ -79,7 +89,7 @@ Maintainer-mode is enabled by default when you build from a git clone.
 
 Don't call the builddir 'build'. There is a directory called 'build' with
 files used by Autotools.
-
+```
   $ meson --prefix /some_directory --libdir lib your_builddir .
   $ cd your_builddir
   $ ninja
@@ -88,9 +98,9 @@ You can run the tests like so:
   $ ninja test
 You can create a tarball like so:
   $ ninja dist
-
+```
 ### Building from git with Autotools
-
+```
   $ ./autogen.sh --prefix=/some_directory
   $ make
   $ make install
@@ -100,3 +110,4 @@ You can create a tarball like so:
   $ make distcheck
 or
   $ make dist
+  ```
