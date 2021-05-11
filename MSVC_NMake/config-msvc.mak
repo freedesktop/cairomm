@@ -22,8 +22,7 @@ CAIROMM_BASE_CFLAGS =			\
 	/D_CRT_NONSTDC_NO_WARNINGS	\
 	/I.. /I.\cairomm		\
 	/D_USE_MATH_DEFINES		\
-	/EHsc	\
-	/wd4251 /wd4275 /wd4530
+	/EHsc
 
 !if $(VSVER) > 12
 CAIROMM_BASE_CFLAGS = $(CAIROMM_BASE_CFLAGS) /utf-8

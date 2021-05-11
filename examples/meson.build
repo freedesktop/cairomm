@@ -13,6 +13,12 @@ examples = [
   [['text'], 'user-font', ['user-font.cc']],
 ]
 
+if is_msvc
+  ex_disabled_warnings = cpp_compiler.get_supported_arguments('/wd4127')
+else
+  ex_disabled_warnings = []
+endif
+
 foreach ex : examples
   dir = ''
   foreach dir_part : ex[0]
@@ -25,7 +31,7 @@ foreach ex : examples
   endforeach
 
   executable(ex_name, ex_sources,
-    cpp_args: '-DCAIROMM_DISABLE_DEPRECATED',
+    cpp_args: [ '-DCAIROMM_DISABLE_DEPRECATED' ] + ex_disabled_warnings,
     dependencies: cairomm_own_dep,
     implicit_include_directories: false,
     gui_app: false,
