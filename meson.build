@@ -1,7 +1,7 @@
 # This file is part of cairomm.
 
 project('cairomm', 'cpp',
-  version: '1.14.2',
+  version: '1.14.3',
   license: 'LGPLv2+',
   default_options: [
     'cpp_std=c++11',

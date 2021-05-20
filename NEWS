@@ -1,3 +1,17 @@
+1.14.3 (stable):
+
+Build:
+* cairommconfig.h.*: Don't dllimport on MinGW
+  (Chun-wei Fan) Merge reqest !15
+  (Chun-wei Fan) Issue gtkmm#90 (Lukas K.)
+* Meson build: Make it possible to use cairomm as a subproject
+  (Kjell Ahlstedt)
+* Meson build: No implicit_include_directories
+  (Kjell Ahlstedt)
+* MSVC build: exception.h: Export Cairo::logic_error selectively
+  (Chun-wei Fan) Merge request !18
+
+
 1.14.2 (stable):
 
 The tarball for 1.14.2 has been created with 'meson dist'.

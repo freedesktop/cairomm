@@ -15,7 +15,7 @@
 ## You should have received a copy of the GNU Lesser General Public License
 ## along with this library.  If not, see <http://www.gnu.org/licenses/>.
 
-AC_INIT([cairomm], [1.14.2],
+AC_INIT([cairomm], [1.14.3],
         [https://gitlab.freedesktop.org/cairo/cairomm/-/issues],
         [cairomm], [http://www.cairographics.org/cairomm/])
 AC_PREREQ([2.62])
