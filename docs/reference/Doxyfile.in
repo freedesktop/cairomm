@@ -30,7 +30,8 @@ MULTILINE_CPP_IS_BRIEF = NO
 INHERIT_DOCS           = YES
 SEPARATE_MEMBER_PAGES  = NO
 TAB_SIZE               = 8
-ALIASES                =
+ALIASES                = "newin{2}=\xrefitem since_\1_\2 \"Since @PACKAGE_NAME@ \1.\2\" \"New API in @PACKAGE_NAME@ \1.\2\"" \
+                         "newin{3}=\xrefitem since_\1_\2_\3 \"Since @PACKAGE_NAME@ \1.\2.\3\" \"New API in @PACKAGE_NAME@ \1.\2.\3\""
 OPTIMIZE_OUTPUT_FOR_C  = NO
 OPTIMIZE_OUTPUT_JAVA   = NO
 OPTIMIZE_FOR_FORTRAN   = NO
@@ -145,7 +146,6 @@ VERBATIM_HEADERS       = NO
 # Configuration options related to the alphabetical class index
 #---------------------------------------------------------------------------
 ALPHABETICAL_INDEX     = NO
-COLS_IN_ALPHA_INDEX    = 5
 IGNORE_PREFIX          =
 #---------------------------------------------------------------------------
 # Configuration options related to the HTML output
@@ -290,7 +290,8 @@ PREDEFINED             = __cplusplus \
                          CAIRO_HAS_PNG_FUNCTIONS \
                          CAIRO_HAS_FT_FONT \
                          CAIRO_HAS_WIN32_FONT \
-                         CAIRO_HAS_QUARTZ_FONT
+                         CAIRO_HAS_QUARTZ_FONT \
+                         "CAIROMM_API="
 EXPAND_AS_DEFINED      = CAIROMM_MAJOR_VERSION \
                          CAIROMM_MINOR_VERSION \
                          CAIROMM_MICRO_VERSION
